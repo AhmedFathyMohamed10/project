@@ -1,0 +1,74 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h1>It's a prediction form</h1>
+                <!--Form to take values from user-->
+                <form method='POST'>
+                {% csrf_token %}
+                    <div class="form-group">
+                        <label for="pregnancies">Pregnancies</label>
+                        <input type="text" class="form-control" name="pregnancies" id="pregnancies" placeholder="Enter your pregnancies" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="glucose">Glucose</label>
+                        <input type="text" class="form-control" name="glucose" id="glucose" placeholder="Enter your glucose" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="bloodpressure">Blood Pressure</label>
+                        <input type="text" class="form-control" name="bloodpressure" id="bloodpressure" placeholder="Enter your blood pressure" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="skinthickness">Skin Thickness</label>
+                        <input type="text" class="form-control" name="skinthickness" id="skinthickness" placeholder="Enter your skin thickness" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="insulin">Insulin</label>
+                        <input type="text" class="form-control" name="insulin" id="insulin" placeholder="Enter your insulin" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="bmi">BMI</label>
+                        <input type="text" class="form-control" name="bmi" id="bmi" placeholder="Enter your BMI" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="diabetespedigreefunction">Diabetes Pedigree Function</label>
+                        <input type="text" class="form-control" name="diabetespedigreefunction" id="diabetespedigreefunction" placeholder="Enter your tall / weight" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Age</label>
+                        <input type="text" class="form-control" name="age" id="age" placeholder="Enter your age" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Predict</button>
+                </form>
+            </div>
+            <!--Displaying prediction-->
+            <div style="margin-left: 50%; margin-top: -60%" class="col-md-8">
+                <h1 style="text-align:center;">Prediction Result</h1>
+                <hr>
+                {% if prediction == 1 %}
+                    <h5 style="text-align:center; font-size: 22px; color: red;">You've a Diabetes issue</h5>
+                {% elif prediction == 0 %}
+                    <h5 style="text-align:center; font-size: 22px; color: green;">You're safe</h5>
+                {% else %}
+                    <h5 style="text-align:center; font-size: 22px; color: blue;">Please fill the form, or correct your inputs</h5>
+                {% endif %}
+                <hr>
+                <h4 style="text-align:center;">Thank you for using our service</h4>
+                <h4 style="text-align:center;">For more information visit <a href="https://www.kaggle.com/uciml/pima-indians-diabetes-database">Kaggle</a></h4>
+            </div>     
+            
+
+        </div>
+    </div>
+</body>
+</html>
